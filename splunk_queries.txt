@@ -1,0 +1,8 @@
+index=main
+index=main EntryType=Error
+index=main | stats count by EntryType
+index=main | timechart count by EntryType
+index=main error OR Error OR ERROR
+| bin _time span=10m
+| stats count by _time
+| where count > 3
